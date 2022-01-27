@@ -3,6 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
 import { useGetCryptoNewsQuery } from "../Services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../Services/cryptoApi";
+import { Loader } from ".";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -18,13 +19,12 @@ const News = ({ simplified }) => {
   });
   const { data } = useGetCryptosQuery(100);
 
-  if (!cryptoNews?.value) return "Loading...";
+  if (!cryptoNews?.value) return <Loader />;
   return (
     <Row gutter={[24, 24]}>
       {!simplified && (
         <Col span={24}>
           <Select
-            
             className="selected-news"
             placeholder="Select a Crypto"
             optionFilterProp="children"

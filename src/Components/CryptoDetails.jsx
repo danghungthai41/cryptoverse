@@ -19,6 +19,7 @@ import {
   useGetCryptoDetailQuery,
 } from "../Services/cryptoApi";
 import LineChart from "./LineChart";
+import { Loader } from ".";
 const { Option } = Select;
 const { Title, Text } = Typography;
 
@@ -31,10 +32,8 @@ const CryptoDetails = () => {
     timePeriod,
   });
   const cryptoDetails = data?.data?.coin;
-  // console.log("coinHistory",coinHistory)
-  if (isFetching) return "Loading...";
+  if (isFetching) return <Loader />;
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
-  console.log("timePeriod", timePeriod);
   const stats = [
     {
       title: "Price to USD",

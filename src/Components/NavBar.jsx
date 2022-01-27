@@ -27,12 +27,11 @@ const NavBar = () => {
       setActiveMenu(true);
     }
   }, [screenSize]);
-  console.log(screenSize)
   return (
     <div className="nav-container">
       <div className="logo-container">
         <div style={{ display: "flex" }}>
-          <Avatar src={logo} size="large" />
+          <Avatar src={logo} size="large" style={{width: "55px", height: "50px"}}/>
           <Typography.Title className="logo" level="2">
             <Link to="/">Cyberverse</Link>
           </Typography.Title>
@@ -41,7 +40,7 @@ const NavBar = () => {
           </Button>
         </div>
         {activeMenu && (
-          <Menu theme="">
+          <Menu theme="dark">
             <Item id="home" icon={<HomeOutlined />}>
               <Link to="/">Home</Link>
             </Item>
