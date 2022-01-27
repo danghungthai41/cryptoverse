@@ -9,16 +9,16 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import logo from "../Images/logo.png";
-const { Item } = Menu
+const { Item } = Menu;
 const NavBar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
-    return window.removeEventListener('resize', handleResize);
+    return window.removeEventListener("resize", handleResize);
   }, [screenSize]);
   useEffect(() => {
     if (screenSize < 768) {
@@ -26,16 +26,24 @@ const NavBar = () => {
     } else {
       setActiveMenu(true);
     }
+
   }, [screenSize]);
   return (
     <div className="nav-container">
       <div className="logo-container">
         <div style={{ display: "flex" }}>
-          <Avatar src={logo} size="large" style={{width: "55px", height: "50px"}}/>
+          <Avatar
+            src={logo}
+            size="large"
+            style={{ width: "55px", height: "50px" }}
+          />
           <Typography.Title className="logo" level="2">
             <Link to="/">Cyberverse</Link>
           </Typography.Title>
-          <Button className="menu-control-container" onClick={()=> setActiveMenu(!activeMenu)}>
+          <Button
+            className="menu-control-container"
+            onClick={() => setActiveMenu(!activeMenu)}
+          >
             <MenuOutlined />
           </Button>
         </div>
@@ -58,7 +66,6 @@ const NavBar = () => {
             </Item>
           </Menu>
         )}
-        
       </div>
     </div>
   );
